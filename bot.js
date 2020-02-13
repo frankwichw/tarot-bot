@@ -1,5 +1,5 @@
 // dependencies
-const twit = require('twit');
+const Twit = require('twit');
 const fs = require('file-system');
 
 // requiring tarot files
@@ -15,6 +15,7 @@ const tarotCards = [];
 // });
 
 let numArray = [];
+let tweetText = '';
 
 function generateReading() {
     // Check every 1 hour (set in Heroku) whether anyone has @'d bot
@@ -26,10 +27,15 @@ function generateReading() {
                 numArray.push(num);
             }
         }
+        // Get list of all files in tarot-cards directory
         fs.readdir('./tarot-cards', function(err, files) {
             console.log(files);
             this.tarotCards = files;
-        })
+        });
+        // Get three files from tarot-cards dir based on numArray
+        // Get file names and replace dashes with spaces to form text of tweet
+        // Form tweetText 
+        // Send tweet with text and images attached (alt text??)
     // Else 
         // Sleep
 }
